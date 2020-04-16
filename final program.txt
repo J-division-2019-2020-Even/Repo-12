@@ -1,0 +1,91 @@
+void setup() {
+  pinMode(1,OUTPUT);            //for dc motor 1
+  pinMode(2,OUTPUT);           //for dc motor 2
+  pinMode(3,OUTPUT);            //for dc motor 3
+  pinMode(4,INPUT);               //for ir sensor 1
+  pinMode(5,INPUT);               //for ir sensor 2
+  pinMode(6,INPUT);               //for ir sensor 3
+  pinMode(7,INPUT);                //for button 1(sweet 1)
+  pinMode(8,INPUT);                //for button 2(sweet 2)
+  pinMode(9,INPUT);               //for button 3(sweet 3)
+  pinMode(10,INPUT);              //for button 4( for 1 sweet)
+  pinMode(11,INPUT);             //for button 5(for 2 sweets)
+  int button1,button2,button3,button4,button5;
+  int sensor1,sensor2,sensor3;
+
+}
+
+void loop() {
+ button1=digitalRead(7);
+ button2=digitalRead(8);
+ button3=digitalRead(9);
+ button4=digitalRead(10);
+ button5=digitalRead(11);
+ sensor1=digitalRead(4);
+ sensor2=digitalRead(5);
+ sensor3=digitalRead(6);
+ if(button1==HIGH)             //for 1st sweet operation of dc motor from here 
+ {
+  digitalWrite(1,HIGH);
+  digitalWrite(2,LOW);
+  digitalWrite(3,LOW);
+  if(button4==HIGH)            //for 1 sweet
+ {
+  if(sensor1==HIGH)            //if sweet acts as obstacle 
+   digitalWrite(1,LOW);         //dc motor stops and sweets will fall down
+  else                                 
+   digitalWrite(1,HIGH);
+ }
+ else if(button5==HIGH)       //for 2 sweets
+ {
+  if(sensor1==HIGH)
+   digitalWrite(1,LOW);
+  else
+   digitalWrite(1,HIGH);
+ }
+ delay(1000); }                //upto here
+
+ 
+   if(button2==HIGH)          //for 2nd sweet operation of dc motor from here 
+ {
+  digitalWrite(2,HIGH);
+  digitalWrite(3,LOW);
+  digitalWrite(1,LOW);
+  if(button4==HIGH)             //for 1 sweet
+ {
+  if(sensor2==HIGH)
+   digitalWrite(2,LOW);
+  else
+   digitalWrite(2,HIGH);
+ }
+ else if(button5==HIGH)         //for 2 sweets
+ {
+  if(sensor2==HIGH)
+   digitalWrite(2,LOW);
+  else
+   digitalWrite(2,HIGH);
+ }
+ delay(1000); )                //upto here
+
+ 
+  if(button3==HIGH)   
+  {                             //for 3rd sweet operation of dc motor 
+   digitalWrite(3,HIGH);
+  digitalWrite(2,LOW);
+  digitalWrite(1,LOW);
+  if(button4==HIGH)           //for 1 sweet
+ {
+  digitalWrite(3,LOW);
+  else
+   digitalWrite(3,HIGH);
+ }
+ else if(button5==HIGH)       //for 2 sweets
+ {
+  if(sensor3==HIGH)
+   digitalWrite(3,LOW);
+  else
+   digitalWrite(3,HIGH);
+ }
+ delay(1000);  
+  } 
+ }                            //upto here
